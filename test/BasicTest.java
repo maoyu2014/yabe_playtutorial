@@ -102,6 +102,7 @@ public class BasicTest extends UnitTest {
     
     @Test
     public void fullTest() {
+    	//从yml读取数据
     	Fixtures.loadModels("data.yml");
     	
     	assertEquals(2, User.count());
