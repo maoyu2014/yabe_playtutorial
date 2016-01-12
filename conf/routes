@@ -7,6 +7,7 @@ GET     /                                       Application.index
 GET     /posts/{id}                             Application.show
         # 注意这里的postId，名字一定要和postComment中的第一个参数一致
 POST    /posts/{postId}/comments                Application.postComment
+GET     /captcha                                Application.captcha
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
