@@ -1,5 +1,7 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
+# yml文件中不要用tab键，都用空格
+# yml文件改过以后需要重启服务
 
 # User(bob):
 #   email: bob@gmail.com
@@ -20,10 +22,28 @@ User(jeff):
     password:       secret
     fullname:       Jeff    
     
+    
+    
+Tag(play):
+    name:           Play
+
+Tag(architecture):
+    name:           Architecture
+
+Tag(test):
+    name:           Test
+
+Tag(mvc):
+    name:           MVC    
+
+
+
 Post(firstBobPost):
     title:          About the model layer
     postedAt:       2009-06-14
     author:         bob
+    tags:           
+                    - architecture
     content:        >
                     The model has a central position in a Play! application. It is the domain-specific 
                     representation of the information on which the application operates.
@@ -46,6 +66,10 @@ Post(jeffPost):
     title:          The MVC application
     postedAt:       2009-06-06
     author:         jeff
+    tags:           
+                    - play
+                    - architecture
+                    - mvc
     content:        >
                     A Play! application follows the MVC architectural pattern as applied to the 
                     architecture of the Web.
@@ -53,7 +77,10 @@ Post(jeffPost):
                     This pattern splits the application into separate layers: the Presentation 
                     layer and the Model layer. The Presentation layer is further split into a 
                     View and a Controller layer.
-                    
+
+
+
+
 Comment(c1):
     author:         Guest
     content:        >
@@ -73,5 +100,4 @@ Comment(c3):
     content:        >
                     This post is useless ?
     postedAt:       2009-04-05
-    post:           secondBobPost    
-                 
+    post:           secondBobPost         
