@@ -6,13 +6,17 @@
 GET     /                                       Application.index
 GET     /posts/{<[0-9]+>id}                     Application.show
         # 注意这里的postId，名字一定要和postComment中的第一个参数一致
-POST    /posts/{postId}/comments                Application.postComment
+POST    /posts/{<[0-9]+>postId}/comments                Application.postComment
 GET     /captcha                                Application.captcha
 GET     /posts/{tag}                            Application.listTagged
 
 # Import CRUD routes
 # 这个一定要加在这里，如果放在最下面，一些功能会被Catch all先捕获，造成位置错误
+GET     /admin/?                                Admin.index
 *       /admin                                  module:crud
+
+# Import Secure routes
+*       /                                       module:secure
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
