@@ -9,10 +9,9 @@
         <span class="post-date">${_post.postedAt.format('dd MMM yy')}</span>
         #{if _as != 'full'}
             <span class="post-comments">
-                &nbsp;|&nbsp; ${_post.comments.size() ?: 'no'} 
-                comment${_post.comments.size().pluralize()}
+                &nbsp;|&nbsp; ${_post.comments.size() ?: 'no'} comment${_post.comments.size().pluralize()}
                 #{if _post.comments}
-                    , latest by ${_post.comments[-1].author}
+                	, latest by ${_post.comments[-1].author}
                 #{/if}
             </span>
         #{/if}
@@ -36,8 +35,7 @@
 #{if _as == 'full'}
     <div class="comments">
         <h3>
-            ${_post.comments.size() ?: 'no'} 
-            comment${_post.comments.size().pluralize()}
+            ${_post.comments.size() ?: 'no'} comment${_post.comments.size().pluralize()}
         </h3>
         
         #{list items:_post.comments, as:'comment'}

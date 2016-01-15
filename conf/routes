@@ -9,6 +9,7 @@ GET     /posts/{<[0-9]+>id}                     Application.show
 POST    /posts/{<[0-9]+>postId}/comments        Application.postComment
 GET     /captcha                                Application.captcha
 GET     /posts/{tag}                            Application.listTagged
+GET     /getUserAsJson							Application.testJson
 
 # Import CRUD routes
 # 这个一定要加在这里，如果放在最下面，一些功能会被Catch all先捕获，造成位置错误
