@@ -1,0 +1,8 @@
+官网的文档提供了两种方法：
+%server01.db=mysql:'www-data':'www-data'@yabe
+和
+%server01.db.url=jdbc:mysql://localhost/yabe
+%server01.db.driver=com.mysql.jdbc.Driver
+%server01.db.user=www-data
+%server01.db.pass=www-data
+在我的1.4.1版本中，实践证明，第一种不好使，必须使用第二种。
