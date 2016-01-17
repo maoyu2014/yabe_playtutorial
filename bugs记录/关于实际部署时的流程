@@ -1,0 +1,47 @@
+1、
+	play id命令生成id，个人喜欢用server_项目名来命令。
+	有了framework id，直接play run就可以自动应用配置文件中的%server_yabe开头的配置了。
+
+2、
+	如果部署有问题，可以重新play id，然后什么都不输入，就可以取消掉framework id，
+	然后play run就是运行dev模式了。
+	
+3、
+	部署时，要换成%server_yabe.application.mode=prod模式；
+	同时，端口号最好不要用9000，个人喜欢从9001开始用，以此累加。
+	
+4、
+	当然，可以使用nginx进行反向代理，这样就可以一个机器就可以同时运行好几个play应用，而且域名更加漂亮。
+	当然，使用nginx还可以进行负载均衡。
+	nginx的配置需要添加如下：（我使用的是nginx-windows-1.9.9）
+
+	http {
+		
+		# 原有东西balabalbala
+			
+		# Mark: below is how to add a new play application on port:9001 in nginx
+		
+		proxy_buffering    off;
+		proxy_set_header   X-Real-IP $remote_addr;
+		proxy_set_header   X-Forwarded-Proto $scheme;
+		proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header   Host $http_host;
+		proxy_http_version 1.1;
+	
+		upstream yabe-backend {
+			server 127.0.0.1:9001;
+		}
+	
+		server {
+	        listen       80;
+	        server_name  www.testyabe.com testyabe.com;
+	
+	        location / {
+	            proxy_pass http://yabe-backend;
+	        }
+	    }
+	    
+	    # 原有东西balabalabala
+	}
+    
+	
